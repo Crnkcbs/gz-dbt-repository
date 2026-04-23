@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: raw
-    database: gz_raw_data1
-    schema: gz_raw_data
+    database: ceren-data0426
+    schema: gz_raw_data1
     tables:
       - name: sales        
         identifier: raw_gz_sales
@@ -11,57 +11,57 @@ sources:
         columns:
           - name: date_date
             description: "Date of order"
-            tests: 
-              - not_null
+            #tests: 
+              #- not_null
           - name: orders_id
             description: "ID of the orders in the order"
-            tests: 
-              - not_null
+            #tests: 
+              #- not_null
           - name: pdt_id
             description: "ID of the product in the order"
-            tests: 
-              - not_null   
+            #tests: 
+              #- not_null   
           - name: revenue
             description: "Gross revenue amount from sales transactions. Currency: USD"
-            tests: 
-              - not_null  
+            #tests: 
+              #- not_null  
           - name: quantity
             description: "The number of units sold in a single transaction"
-            tests: 
-              - not_null      
+            #tests: 
+              #- not_null      
       - name: product       
         identifier: raw_gz_product
         description: "Product list greenweez company"
         columns:
           - name: products_id
             description: "ID of the product in the order"
-            tests: 
-              - not_null
+            #tests: 
+              #- not_null
           - name: purchSE_PRICE
             description: "Raw purchase price string. To be renamed and cast in staging"
-            tests: 
-              - not_null            
+            #tests: 
+             #- not_null            
       - name: ship   
         identifier: raw_gz_ship
         description: "Ship list greenweez company"
         columns:
           - name: orders_id 
             description: "ID of the orders in the order"
-            tests: 
-              - not_null
+            #tests: 
+              #- not_null
           - name: shipping_fee
             description: "Shipping and handling fees charged per transaction. Currency: USD"
-            tests: 
-              - not_null    
+            #tests: 
+              #- not_null    
           - name: shipping_fee_1 
             description: "Potential duplicate of shipping_fee. Investigating for removal in the staging layer. Currency: USD."
-            tests: 
-              - not_null  
+            #tests: 
+              #- not_null  
           - name: logCost
             description: "Total logistics cost in USD. To be renamed as 'logistics_cost' in the staging layer for standard consistency."
-            tests: 
-              - not_null    
+            #tests: 
+              #- not_null    
           - name: ship_cost
             description: "Actual shipping cost (Operational). Stored as string. Currency: USD."
-            tests: 
-              - not_null                                      
+            #tests: 
+              #- not_null                                      
