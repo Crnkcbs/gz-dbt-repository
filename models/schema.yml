@@ -7,61 +7,64 @@ sources:
     tables:
       - name: sales        
         identifier: raw_gz_sales
-        description: "Sales list greenweez company"
+        description: "Greenweez company-Staging model for sales data."
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"        
         columns:
           - name: date_date
-            description: "Date of order"
-            #tests: 
-              #- not_null
+            description: "Date of purchase"
+            tests: 
+              - not_null
           - name: orders_id
-            description: "ID of the orders in the order"
-            #tests: 
-              #- not_null
+            description: "ID of the orders"
+            tests: 
+              - not_null
           - name: pdt_id
-            description: "ID of the product in the order"
-            #tests: 
-              #- not_null   
+            description: "ID of the product"
+            tests: 
+              - not_null   
           - name: revenue
-            description: "Gross revenue amount from sales transactions. Currency: USD"
-            #tests: 
-              #- not_null  
+            description: "Gross revenue amount. Currency: USD"
+            tests: 
+              - not_null  
           - name: quantity
-            description: "The number of units sold in a single transaction"
-            #tests: 
-              #- not_null      
+            description: "The number of units sold"
+            tests: 
+              - not_null      
+
       - name: product       
         identifier: raw_gz_product
-        description: "Product list greenweez company"
+        description: "Greenweez company-Staging model for product data."
         columns:
           - name: products_id
-            description: "ID of the product in the order"
-            #tests: 
-              #- not_null
-          - name: purchSE_PRICE
-            description: "Raw purchase price string. To be renamed and cast in staging"
-            #tests: 
-             #- not_null            
+            description: "Primary key for products"
+            tests:
+              - unique
+              - not_null
+          - name: purchSE_PRICE 
+            description: "Raw purchase price string."
+            tests: 
+              - not_null            
+
       - name: ship   
         identifier: raw_gz_ship
-        description: "Ship list greenweez company"
+        description: "Greenweez company-Staging model for shipping data."
         columns:
           - name: orders_id 
-            description: "ID of the orders in the order"
-            #tests: 
-              #- not_null
+            description: "Primary key for shipping"
+            tests:
+              - unique
+              - not_null
           - name: shipping_fee
-            description: "Shipping and handling fees charged per transaction. Currency: USD"
-            #tests: 
-              #- not_null    
-          - name: shipping_fee_1 
-            description: "Potential duplicate of shipping_fee. Investigating for removal in the staging layer. Currency: USD."
-            #tests: 
-              #- not_null  
+            description: "Shipping and handling fees."
+            tests: 
+              - not_null    
           - name: logCost
-            description: "Total logistics cost in USD. To be renamed as 'logistics_cost' in the staging layer for standard consistency."
-            #tests: 
-              #- not_null    
+            description: "Total logistics cost."
+            tests: 
+              - not_null    
           - name: ship_cost
-            description: "Actual shipping cost (Operational). Stored as string. Currency: USD."
-            #tests: 
-              #- not_null                                      
+            description: "Actual shipping cost."
+            tests: 
+              - not_null
