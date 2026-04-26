@@ -1,0 +1,74 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ceren-data0426
+    schema: gz_raw_data1  
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: "Greenweez company-Staging model for sales data. Renamed columns and cast data types for consistency.freshness check"
+        tests:
+          - unique:
+              column_name: "orders_id || '-' || pdt_id"
+        columns:
+          - name: date_date
+            description: "Date of order"
+            tests:
+              - not_null
+          - name: orders_id
+            description: "ID of the orders in the order"
+            tests:
+              - not_null
+          - name: pdt_id
+            description: "ID of the product in the order"
+            tests:
+              - not_null
+          - name: revenue
+            description: "Gross revenue amount from sales transactions. Currency: USD"
+            tests:
+              - not_null
+          - name: quantity
+            description: "The number of units sold in a single transaction"
+            tests:
+              - not_null
+
+      - name: product
+        identifier: raw_gz_product
+        description: "Greenweez company-Staging model for product data. Renamed purchase price and handled data type casting."
+        columns:
+          - name: products_id
+            description: "Primary key for products"
+            tests:
+              - unique
+              - not_null
+          - name: purchSE_PRICE
+            description: "Raw purchase price string. To be renamed and cast in staging"
+            tests:
+              - not_null
+
+      - name: ship
+        identifier: raw_gz_ship
+        description: "Greenweez company-Staging model for shipping and logistics data. Cleaned operational costs."
+        columns:
+          - name: orders_id
+            description: "Primary key for shipping"
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: "Shipping and handling fees charged per transaction. Currency: USD"
+            tests:
+              - not_null
+          - name: shipping_fee_1
+            description: "Potential duplicate of shipping_fee. Investigating for removal in the staging layer. Currency: USD."
+            tests:
+              - not_null
+          - name: logCost
+            description: "Total logistics cost in USD. To be renamed as 'logistics_cost' in the staging layer for standard consistency."
+            tests:
+              - not_null
+          - name: ship_cost
+            description: "Actual shipping cost (Operational). Stored as string. Currency: USD."
+            tests:
+              - not_null
