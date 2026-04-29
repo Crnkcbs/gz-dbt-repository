@@ -77,9 +77,13 @@ sources:
         description: "Greenweez company-Staging model for Advertisement data"
         columns:
           - name: date_date
-            description: "source of income"
+            description: "advertising date"
             tests:
               - not_null
+          - name: paid_source
+            description: "source of income"
+            tests:
+              - not_null             
           - name: campaign_key 
             description: "The unique identifier for a marketing campaign."
             tests:
@@ -100,4 +104,105 @@ The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide na
           - name: click
             description: "Total number of clicks on the advertisement. Cast to integer for reporting consistency."
             tests:
-              - not_null   
+              - not_null 
+      - name: bing
+        identifier: raw_gz_bing
+        description: "Greenweez company-Staging model for bing data"
+        columns:
+          - name: date_date
+            description: "advertising date"
+            tests:
+              - not_null
+          - name:  paid_source
+            description:  "sourse of income" 
+            tests:
+              - not_null                 
+          - name: campaign_key 
+            description: "The unique identifier for a marketing campaign."
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: "Staging model for advertising data. 
+The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide naming consistency. Additionally, special characters (e.g., 'é') within the campaign names have been replaced with standard characters ('e')"
+            tests:
+              - not_null
+          - name: ads_cost 
+            description: "Total advertising cost. Cast from string to numeric for calculations."
+            tests:
+              - not_null
+          - name: impression 
+            description: "The total number of times the advertisement was displayed."
+            tests:
+              - not_null              
+          - name: click
+            description: "Total number of clicks on the advertisement. Cast to integer for reporting consistency."
+            tests:
+              - not_null 
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: "Greenweez company-Staging model for bing data"
+        columns:
+          - name: date_date
+            description: "advertising date"
+            tests:
+              - not_null
+          - name: paid_source
+            description: "source of income"
+            tests:
+              - not_null                 
+          - name: campaign_key 
+            description: "The unique identifier for a marketing campaign."
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: "Staging model for advertising data. 
+The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide naming consistency. Additionally, special characters (e.g., 'é') within the campaign names have been replaced with standard characters ('e')"
+            tests:
+              - not_null
+          - name: ads_cost 
+            description: "Total advertising cost. Cast from string to numeric for calculations."
+            tests:
+              - not_null
+          - name: impression 
+            description: "The total number of times the advertisement was displayed."
+            tests:
+              - not_null              
+          - name: click
+            description: "Total number of clicks on the advertisement. Cast to integer for reporting consistency."
+            tests:
+              - not_null 
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: "Greenweez company-Staging model for bing data"
+        columns:
+          - name: date_date
+            description: "advertising date"
+            tests:
+              - not_null
+          - name: paid_source
+            description: "source of income"
+            tests:
+              - not_null                 
+          - name: campaign_key 
+            description: "The unique identifier for a marketing campaign."
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: "Staging model for advertising data. 
+The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide naming consistency. Additionally, special characters (e.g., 'é') within the campaign names have been replaced with standard characters ('e')"
+            tests:
+              - not_null
+          - name: ads_cost 
+            description: "Total advertising cost. Cast from string to numeric for calculations."
+            tests:
+              - not_null
+          - name: impression 
+            description: "The total number of times the advertisement was displayed."
+            tests:
+              - not_null              
+          - name: click
+            description: "Total number of clicks on the advertisement. Cast to integer for reporting consistency."
+            tests:
+              - not_null 
+
+    
