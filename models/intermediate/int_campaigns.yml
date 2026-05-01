@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_campaigns_day
+    description: "Daily aggregated advertising metrics from all platforms."
+    columns:
+      - name: date_date
+        description: "The date of the aggregated metrics."
+        tests:
+          - unique
+          - not_null
+      - name: ads_cost
+        description: "Total daily advertising cost summarized from all campaigns."
+      - name: ads_impression
+        description: "Total daily impressions."
+      - name: ads_clicks
+        description: "Total daily clicks"
