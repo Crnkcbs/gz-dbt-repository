@@ -7,11 +7,10 @@ renamed as (
       date_date,
       paid_source,
       campaign_key,
-      impression,
-      click,
-        
         REPLACE(camPGN_name,  'é' , 'e') AS campaign_name,
-        CAST(ads_cost AS FLOAT64 ) AS ads_cost
+        CAST(ads_cost AS FLOAT64 ) AS ads_cost,
+        CAST(impression AS INT64 ) AS impression,
+        CAST(click AS INT64 ) AS click
     from source
 )
 
