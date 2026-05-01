@@ -75,6 +75,9 @@ sources:
       - name: adwords
         identifier: raw_gz_adwords
         description: "Greenweez company-Staging model for Advertisement data"
+        tests:
+          - unique:
+              column_name: "date_date || '-' || campaign_key"        
         columns:
           - name: date_date
             description: "advertising date"
@@ -108,6 +111,9 @@ The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide na
       - name: bing
         identifier: raw_gz_bing
         description: "Greenweez company-Staging model for bing data"
+        tests:
+          - unique:
+              column_name: "date_date || '-' || campaign_key" 
         columns:
           - name: date_date
             description: "advertising date"
@@ -141,6 +147,9 @@ The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide na
       - name: criteo
         identifier: raw_gz_criteo
         description: "Greenweez company-Staging model for bing data"
+        tests:
+          - unique:
+              column_name: "date_date || '-' || campaign_key" 
         columns:
           - name: date_date
             description: "advertising date"
@@ -174,6 +183,9 @@ The column 'camPGN_name' has been renamed to 'campaign_name' for project-wide na
       - name: facebook
         identifier: raw_gz_facebook
         description: "Greenweez company-Staging model for bing data"
+        tests:
+          - unique:
+              column_name: "date_date || '-' || campaign_key" 
         columns:
           - name: date_date
             description: "advertising date"
