@@ -20,6 +20,7 @@ select
     round(sum(shipping_fee), 2) as shipping_fee,
     -- Toplam lojistik maliyetleri (Firmadan çıkan: logcost + ship_cost)
     round(sum(logistics_cost + shipping_cost), 2) as log_cost,
+    round(sum(shipping_cost), 2) as ship_cost,
     -- Satılan toplam ürün miktarı
     sum(quantity) as quantity
 from orders
